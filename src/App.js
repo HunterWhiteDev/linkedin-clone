@@ -11,7 +11,7 @@ function App(props) {
   useEffect(() => {
     props.getUserAuth();
   }, []);
-
+  console.log(props);
   return (
     <div className="app">
       <Router>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import "./Main.css";
+import PostModal from "./PostModal";
 const Main = (props) => {
   return (
     <Container>
@@ -30,67 +31,69 @@ const Main = (props) => {
           </button>
         </div>
       </ShareBox>
-
-      <Article>
-        <SharedActor>
-          <a>
-            <img src="/images/user.svg" alt="" />
-            <div>
-              <span>Title </span>
-              <span>Info</span>
-              <span>Date</span>
-            </div>
-          </a>
-          <button>
-            <p
-              style={{
-                fontSize: "32px",
-              }}
-            >
-              ...
-            </p>
-          </button>
-        </SharedActor>
-        <Description>Description</Description>
-        <SharedImage>
-          <a>
-            <img src="/images/shared-image.webp" />
-          </a>
-        </SharedImage>
-        <SocialCount>
-          <li>
+      <div>
+        <Article>
+          <SharedActor>
+            <a>
+              <img src="/images/user.svg" alt="" />
+              <div>
+                <span>Title </span>
+                <span>Info</span>
+                <span>Date</span>
+              </div>
+            </a>
             <button>
-              <img
-                src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"
-                alt=""
-              />
-              <img
-                src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"
-                alt=""
-              />
-              <span>75</span>
+              <p
+                style={{
+                  fontSize: "32px",
+                }}
+              >
+                ...
+              </p>
             </button>
-          </li>
-          <li>
-            <a>2 comments</a>
-          </li>
-        </SocialCount>
+          </SharedActor>
+          <Description>Description</Description>
+          <SharedImage>
+            <a>
+              <img src="/images/shared-image.webp" />
+            </a>
+          </SharedImage>
+          <SocialCount>
+            <li>
+              <button>
+                <img
+                  src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"
+                  alt=""
+                />
+                <img
+                  src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"
+                  alt=""
+                />
+                <span>75</span>
+              </button>
+            </li>
+            <li>
+              <a>2 comments</a>
+            </li>
+          </SocialCount>
 
-        <SocialActions>
-          <button>
-            <img src="/images/like-icon.svg" alt="" />
-            <span>Like</span>
-          </button>
-          <button>
-            <img src="/images/comment-icon.svg" alt="" />
-            <span>Comment</span>
-          </button>{" "}
-          <button>
-            <img src="/images/share-icon.svg" alt="" />
-            <span>Share</span>
-          </button>
-        </SocialActions>
-      </Article>
+          <SocialActions>
+            <button>
+              <img src="/images/like-icon.svg" alt="" />
+              <span>Like</span>
+            </button>
+            <button>
+              <img src="/images/comment-icon.svg" alt="" />
+              <span>Comment</span>
+            </button>{" "}
+            <button>
+              <img src="/images/share-icon.svg" alt="" />
+              <span>Share</span>
+            </button>
+          </SocialActions>
+        </Article>
+      </div>
+      <PostModal />
     </Container>
   );
 };
