@@ -1,6 +1,6 @@
 import { auth, provider, storage } from "../firebase";
 import db from "../firebase";
-import { SET_USER } from "./actionType";
+import { SET_USER, SET_LOADING_STATUS, GET_ARTICLES } from "./actionType";
 export const setUser = (payload) => ({
   type: SET_USER,
   user: payload,
@@ -16,6 +16,11 @@ export function signInAPI() {
       .catch((error) => alert(error.message));
   };
 }
+
+export const setLoading = (status) => ({
+  type: SET_LOADING_STATUS,
+  status: status,
+});
 
 export function getUserAuth() {
   return (dispatch) => {
@@ -40,8 +45,14 @@ export function signOutAPI() {
   };
 }
 
+export const getArticles = (payload) => ({
+  type: GET_ARTICLES,
+  payload: payload,
+});
+
 export function postArticleAPI(payload) {
   return (dispatch) => {
+    dispatch(setLoading(true));
     if (payload.image != "") {
       const upload = storage
         .ref(`images/${payload.image.name}`)
@@ -63,7 +74,7 @@ export function postArticleAPI(payload) {
           const downloadURL = await upload.snapshot.ref.getDownloadURL();
           db.collection("articles").add({
             actor: {
-              desciption: payload.user.email,
+              description: payload.user.email,
               title: payload.user.displayName,
               date: payload.timestamp,
               image: payload.user.photoURL,
@@ -73,6 +84,7 @@ export function postArticleAPI(payload) {
             comments: 0,
             description: payload.description,
           });
+          dispatch(setLoading(false));
         }
       );
     } else if (payload.video) {
@@ -89,5 +101,17 @@ export function postArticleAPI(payload) {
         description: payload.description,
       });
     }
+  };
+}
+
+export function getArticlesAPI() {
+  return (dispatch) => {
+    let payload;
+    db.collection("articles")
+      .orderBy("actor.date", "desc")
+      .onSnapshot((snapshot) => {
+        payload = snapshot.docs.map((doc) => doc.data());
+        dispatch(getArticles(payload));
+      });
   };
 }
