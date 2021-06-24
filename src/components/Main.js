@@ -233,6 +233,7 @@ const Article = styled(CommonCard)`
   padding: 0;
   margin: 0 0;
   overflow: visible;
+  margin-bottom: 5px;
 `;
 
 const SharedActor = styled.div`
@@ -319,6 +320,8 @@ const SocialCount = styled.ul`
     font-size: 12px;
     button {
       display: flex;
+      border: none;
+      background-color: white;
     }
   }
 `;
@@ -334,6 +337,8 @@ const SocialActions = styled.div`
     display: inline-flex;
     align-items: center;
     padding: 8px;
+    border: none;
+    background-color: white;
     @media (min-width: 768px) {
       margin-left: 8px;
     }
