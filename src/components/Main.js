@@ -327,7 +327,7 @@ const SocialCount = styled.ul`
 `;
 
 const SocialActions = styled.div`
-  align-itmes: center;
+  align-items: center;
   display: flex;
   justify-content: flex-start;
   margin: 0;
